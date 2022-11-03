@@ -4,5 +4,5 @@
 # 사용 방법
 1. pip install django
 2. python manage.py runserver
-3. 127.0.0.1/admin 접속
+3. 127.0.0.1:8000/admin 접속
 4. 회원 추가 및 보여줄 정보 관리
