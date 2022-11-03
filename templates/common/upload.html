@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% if user.is_superuser %}
 <div class="container my-3">
 
     <form action="{% url 'common:upload' %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
@@ -16,7 +17,7 @@
             </div>
         </div>
     </form>
-
-
 </div>
+{% endif %}
+
 {% endblock %}
