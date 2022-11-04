@@ -7,7 +7,8 @@ from django.urls import reverse
 from csl.models import StudentInform
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
-
+from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 
 def signup(request):
     if request.method == "POST":
@@ -24,6 +25,7 @@ def signup(request):
     return render(request, 'common/signup.html', {'form': form})
 
 
+@login_required(login_url='common:login')
 def upload(request):
     data = {}
     if "GET" == request.method:
@@ -65,13 +67,17 @@ def upload(request):
                 form.inform9 = fields[9]
                 form.inform10 = fields[10]
                 form.save()
-
             except Exception as e:
-                print(e)
                 pass
 
     except Exception as e:
         messages.error(request, "Unable to upload file. " + repr(e))
 
-    return render(request, 'csl/csl_list.html')
+    messages.success(request, str(len(lines)-1) + " 명의 정보가 추가 되었습니다.")
+    student_list = StudentInform.objects.all()
+    context = {
+                'student_list': student_list,
+               }
+
+    return render(request, 'csl/csl_list.html', context)
 
