@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3">
+    <p>
+        {{suakii}}
+    </p>
+   {% if messages %}
+    <div class="alert alert-success my-3" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr class="text-center table-dark">
+            {% if subject_list %}
+                {% for subject in subject_list %}
+                    <th> {{subject.inform0}} </th>
+                    <th> {{subject.inform1}} </th>
+                    <th> {{subject.inform2}} </th>
+                    <th> {{subject.inform3}} </th>
+                    <th> {{subject.inform4}} </th>
+                    <th> {{subject.inform5}} </th>
+                    <th> {{subject.inform6}} </th>
+                    <th> {{subject.inform7}} </th>
+                    <th> {{subject.inform8}} </th>
+                    <th> {{subject.inform9}} </th>
+                    <th> {{subject.inform10}} </th>
+                {% endfor %}
+            {% endif %}
+
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if student_list %}
+            {% if user.is_superuser %}
+                {% for student in student_list %}
+                    <tr class="text-center">
+                        <td>{{student.student}}</td>
+                        <td>{{student.inform1}}</td>
+                        <td>{{student.inform2}}</td>
+                        <td>{{student.inform3}}</td>
+                        <td>{{student.inform4}}</td>
+                        <td>{{student.inform5}}</td>
+                        <td>{{student.inform6}}</td>
+                        <td>{{student.inform7}}</td>
+                        <td>{{student.inform8}}</td>
+                        <td>{{student.inform9}}</td>
+                        <td>{{student.inform10}}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for student in student_list %}
+                    {% if request.user == student.student %}
+                        <tr class="text-center">
+                            <td>{{student.student}}</td>
+                            <td>{{student.inform1}}</td>
+                            <td>{{student.inform2}}</td>
+                            <td>{{student.inform3}}</td>
+                            <td>{{student.inform4}}</td>
+                            <td>{{student.inform5}}</td>
+                            <td>{{student.inform6}}</td>
+                            <td>{{student.inform7}}</td>
+                            <td>{{student.inform8}}</td>
+                            <td>{{student.inform9}}</td>
+                            <td>{{student.inform10}}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
