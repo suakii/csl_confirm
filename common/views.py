@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from csl.models import StudentInform
+from csl.models import SubjectInform
+
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -46,38 +48,135 @@ def upload(request):
         lines = file_data.split("\n")
         # loop over the lines and save them in db. If error , store as string and then display
 
-        for line in lines[1:]:
+
+
+        for i, line in enumerate(lines):
             fields = line.split(",")
-            try:
-                question = StudentInform.objects.filter(student_id=User.objects.get(username=fields[0]).pk)
-                question.delete()
-            except Exception as e:
-                pass
-            try:
-                form = StudentInform()
-                form.student_id = User.objects.get(username=fields[0]).pk
-                form.inform1 = fields[1]
-                form.inform2 = fields[2]
-                form.inform3 = fields[3]
-                form.inform4 = fields[4]
-                form.inform5 = fields[5]
-                form.inform6 = fields[6]
-                form.inform7 = fields[7]
-                form.inform8 = fields[8]
-                form.inform9 = fields[9]
-                form.inform10 = fields[10]
-                form.save()
-            except Exception as e:
-                pass
+            if (i == 0):
+                try:
+                    informs = SubjectInform.objects.all().delete()
+                except Exception as e:
+                    pass
+                try:
+                    form = SubjectInform()
+                    form.inform0 = fields[0]
+                    try:
+                        form.inform0 = fields[0]
+                    except Exception as e:
+                        form.inform0 = ""
+
+                    try:
+                        form.inform1 = fields[1]
+                    except Exception as e:
+                        form.inform1 = ""
+                    try:
+                        form.inform2 = fields[2]
+                    except Exception as e:
+                        form.inform2 = ""
+                    try:
+                        form.inform3 = fields[3]
+                    except Exception as e:
+                        form.inform3 = ""
+                    try:
+                        form.inform4 = fields[4]
+                    except Exception as e:
+                        form.inform4 = ""
+                    try:
+                        form.inform5 = fields[5]
+                    except Exception as e:
+                        form.inform5 = ""
+                    try:
+                        form.inform6 = fields[6]
+                    except Exception as e:
+                        form.inform6 = ""
+                    try:
+                        form.inform7 = fields[7]
+                    except Exception as e:
+                        form.inform7 = ""
+                    try:
+                        form.inform8 = fields[8]
+                    except Exception as e:
+                        form.inform8 = ""
+                    try:
+                        form.inform9 = fields[9]
+                    except Exception as e:
+                        form.inform9 = ""
+                    try:
+                        form.inform10 = fields[10]
+                    except Exception as e:
+                        form.inform10 = ""
+
+                    form.save()
+                except Exception as e:
+                    pass
+
+            else:
+                try:
+                    informs = StudentInform.objects.filter(student_id=User.objects.get(username=fields[0]).pk)
+                    informs.delete()
+                except Exception as e:
+                    pass
+                try:
+                    form = StudentInform()
+                    form.student_id = User.objects.get(username=fields[0]).pk
+
+                    try:
+                        form.inform1 = fields[1]
+                    except Exception as e:
+                        form.inform1 = ""
+                    try:
+                        form.inform2 = fields[2]
+                    except Exception as e:
+                        form.inform2 = ""
+                    try:
+                        form.inform3 = fields[3]
+                    except Exception as e:
+                        form.inform3 = ""
+                    try:
+                        form.inform4 = fields[4]
+                    except Exception as e:
+                        form.inform4 = ""
+                    try:
+                        form.inform5 = fields[5]
+                    except Exception as e:
+                        form.inform5 = ""
+                    try:
+                        form.inform6 = fields[6]
+                    except Exception as e:
+                        form.inform6 = ""
+                    try:
+                        form.inform7 = fields[7]
+                    except Exception as e:
+                        form.inform7 = ""
+                    try:
+                        form.inform8 = fields[8]
+                    except Exception as e:
+                        form.inform8 = ""
+                    try:
+                        form.inform9 = fields[9]
+                    except Exception as e:
+                        form.inform9 = ""
+                    try:
+                        form.inform10 = fields[10]
+                    except Exception as e:
+                        form.inform10 = ""
+
+
+                    form.save()
+                except Exception as e:
+                    print(e)
+                    pass
 
     except Exception as e:
         messages.error(request, "Unable to upload file. " + repr(e))
 
     messages.success(request, str(len(lines)-1) + " 명의 정보가 추가 되었습니다.")
     student_list = StudentInform.objects.all()
+    subject_list = SubjectInform.objects.all()
+
     context = {
                 'student_list': student_list,
+                'subject_list' : subject_list,
                }
-
     return render(request, 'csl/csl_list.html', context)
 

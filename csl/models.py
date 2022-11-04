@@ -18,3 +18,18 @@ class StudentInform(models.Model):
 
 
 
+class SubjectInform(models.Model):
+    inform0 = models.CharField(max_length=100, blank=True)
+    inform1 = models.CharField(max_length=100, blank=True)
+    inform2 = models.CharField(max_length=100, blank=True)
+    inform3 = models.CharField(max_length=100, blank=True)
+    inform4 = models.CharField(max_length=100, blank=True)
+    inform5 = models.CharField(max_length=100, blank=True)
+    inform6 = models.CharField(max_length=100, blank=True)
+    inform7 = models.CharField(max_length=100, blank=True)
+    inform8 = models.CharField(max_length=100, blank=True)
+    inform9 = models.CharField(max_length=100, blank=True)
+    inform10 = models.CharField(max_length=100, blank=True)
+
+
+
