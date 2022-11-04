@@ -24,11 +24,8 @@
    2. 자신의 점수 조회
    
 3. 화면
-<img src="/imgs/1.png", width="300px">
-<img src="/imgs/2.png", width="300px">
-<img src="/imgs/3.png", width="300px">
-<img src="/imgs/4.png", width="300px">
-<img src="/imgs/5.png", width="300px">
+<img src="./imgs/1.png", width="300px">
+
 
 
 
