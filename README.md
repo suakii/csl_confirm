@@ -24,15 +24,12 @@
    2. 자신의 점수 조회
    
 3. 화면
-![](/imgs/1.png){: width="400"}
+<img src="./images/1.png", width="300px">
+<img src="./images/2.png", width="300px">
+<img src="./images/3.png", width="300px">
+<img src="./images/4.png", width="300px">
+<img src="./images/5.png", width="300px">
 
-![](/imgs/2.png){: width="400"}
-
-![](/imgs/3.png){: width="400"}
-
-![](/imgs/4.png){: width="400"}
-
-![](/imgs/5.png){: width="400"}
 
 
 
