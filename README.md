@@ -25,7 +25,7 @@
    
 3. 화면
 
-<img src="./imgs/1.png" width="300">
+<img src="./imgs/1.png" width="500">
 
 
 
