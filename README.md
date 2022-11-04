@@ -24,5 +24,11 @@
    2. 자신의 점수 조회
    
 3. 화면
-![](/imgs/1.png){: width="500"}
+![](/imgs/1.png){: width="400"}
+![](/imgs/2.png){: width="400"}
+![](/imgs/3.png){: width="400"}
+![](/imgs/4.png){: width="400"}
+![](/imgs/5.png){: width="400"}
+
+
 
